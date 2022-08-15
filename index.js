@@ -141,6 +141,7 @@ function generateManger() {
 					message: "what is your engineer's name?",
 				},
 			])
+
 			.then((answers) => {
 				team.push(answers);
 				toDoNext(manager, team);
@@ -148,6 +149,13 @@ function generateManger() {
 	}
 	function generateHTML() {
 		console.log("create html");
+		const team = generateHTML(answers);
+		fs.writeFile("index.html"),
+			htmlPageContent,
+			(err) =>
+				err
+					? console.log(err)
+					: console.log("Successfully created index.html!");
 	}
 	//.then((answers) => {
 	//

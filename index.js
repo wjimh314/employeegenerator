@@ -15,15 +15,28 @@ const generateHTML = ({ name, ID, github, email, office }) =>
 	</head>
 	<body>
 		<div class="jumbotron jumbotron-fluid">
-			<div class="container">
-				<ul class="list-group">
+			<div class="container"></div>
+
+			<div class="card" style="width: 18rem">
+				<div class="card-header">Manager</div>
+
+				<ul class="list-group list-group-flush">
 					<li class="list-group-item">${name}</li>
 					<li class="list-group-item">${ID}</li>
 					<li class="list-group-item">${email}</li>
-					<li class="list-group-item">${office}</li>
 					<li class="list-group-item">${github}</li>
 				</ul>
 			</div>
+			
+			<div class="card" style="width: 18rem">
+			<div class="card-header">intern</div>
+
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">${name}</li>
+				<li class="list-group-item">${ID}</li>
+				<li class="list-group-item">${email}</li>
+				<li class="list-group-item">${github}</li>
+			</ul>
 		</div>
 	</body>
 </html>`;
@@ -96,6 +109,22 @@ function generateManger() {
 					type: "input",
 					name: "name",
 					message: "what is your interns name?",
+				},
+				{
+					type: "input",
+					name: "ID",
+					message: "What is your id?",
+				},
+				{
+					type: "input",
+					name: "office",
+					message: "What is your office number?",
+				},
+
+				{
+					type: "input",
+					name: "github",
+					message: "Enter your GitHub Username",
 				},
 			])
 			.then((answers) => {

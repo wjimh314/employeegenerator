@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-
+const team = [];
 const generateHTML = ({ name, ID, github, email, office }) =>
 	`<!DOCTYPE html>
 <html lang="en">
@@ -140,29 +140,29 @@ function generateManger() {
 					name: "name",
 					message: "what is your engineer's name?",
 				},
+				{
+					type: "input",
+					name: "ID",
+					message: "What is your id?",
+				},
+				{
+					type: "input",
+					name: "office",
+					message: "What is your office number?",
+				},
+
+				{
+					type: "input",
+					name: "github",
+					message: "Enter your GitHub Username",
+				},
 			])
 
 			.then((answers) => {
 				team.push(answers);
 				toDoNext(manager, team);
+				console.log(answers);
 			});
 	}
-	function generateHTML() {
-		console.log("create html");
-		const team = generateHTML(answers);
-		fs.writeFile("index.html"),
-			htmlPageContent,
-			(err) =>
-				err
-					? console.log(err)
-					: console.log("Successfully created index.html!");
-	}
-	//.then((answers) => {
-	//
-
-	//	fs.writeFile("index.html", htmlPageContent, (err) =>
-	//		err ? console.log(err) : console.log("Successfully created index.html!")
-	//	);
-	//});}
 }
 generateManger();

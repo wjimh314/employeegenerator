@@ -80,7 +80,7 @@ function generateManger() {
 					type: "list",
 					name: "todo",
 					message: "what do you want to do next?",
-					choices: ["add intern", "add engineer", "or create your html?"],
+					choices: [ "add manager","add intern", "add engineer", "or create your html?"],
 				},
 			])
 			.then((answer) => {
@@ -164,5 +164,13 @@ function generateManger() {
 				console.log(answers);
 			});
 	}
+
 }
 generateManger();
+.then(team.push() => {
+return generateHTML(team)})
+
+
+// to: figure out why this will not generate the index html fiie
+//figure out how to do some sort of four loop in order to generate one card at a time on index html file
+// figure out how to do atleast one test for the employees.

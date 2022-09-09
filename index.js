@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const team = [];
+const Manager = require("./lib/Manager");
 const generateHTML = ({ name, ID, github, email, office }) =>
 	`<!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,8 @@ const generateHTML = ({ name, ID, github, email, office }) =>
 					<li class="list-group-item">${ID}</li>
 					<li class="list-group-item">${email}</li>
 					<li class="list-group-item">${github}</li>
+					<li class="list-group-item">${office}</li>
+
 				</ul>
 			</div>
 			
@@ -66,6 +69,8 @@ function generateManger() {
 			},
 		])
 		.then((answers) => {
+			const newManager = new Manager(answers.name);
+			team.push(newManager);
 			toDoNext(answers);
 		});
 	function toDoNext(manager, team) {
@@ -80,7 +85,7 @@ function generateManger() {
 					type: "list",
 					name: "todo",
 					message: "what do you want to do next?",
-					choices: [ "add manager","add intern", "add engineer", "or create your html?"],
+					choices: ["add intern", "add engineer", "or create your html?"],
 				},
 			])
 			.then((answer) => {
@@ -95,7 +100,8 @@ function generateManger() {
 						break;
 
 					default:
-						generateHTML();
+						console.log(team);
+						generateHTML(team);
 						break;
 				}
 			});
@@ -128,6 +134,8 @@ function generateManger() {
 				},
 			])
 			.then((answers) => {
+				const newIntern = new Intern(answers.name);
+				team.push(newIntern);
 				toDoNext(answers);
 			});
 	}
@@ -160,16 +168,12 @@ function generateManger() {
 
 			.then((answers) => {
 				team.push(answers);
-				toDoNext(manager, team);
+				toDoNext(Manager, team);
 				console.log(answers);
 			});
 	}
-
 }
-generateManger();
-.then(team.push() => {
-return generateHTML(team)})
-
+generateHTML();
 
 // to: figure out why this will not generate the index html fiie
 //figure out how to do some sort of four loop in order to generate one card at a time on index html file
